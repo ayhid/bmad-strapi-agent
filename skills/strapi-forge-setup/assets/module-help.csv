@@ -1,0 +1,19 @@
+module,skill,display-name,menu-code,description,action,args,phase,preceded-by,followed-by,required,output-location,outputs
+Strapi Plugin Forge,strapi-forge-setup,Setup Strapi Plugin Forge,SF,Install or update Strapi Plugin Forge config and help entries.,configure,,anytime,,,false,{project-root}/_bmad,config.yaml entries
+Strapi Plugin Forge,strapi-forge-agent-architect,Plugin Architect (Nadir),PA,Strategic plugin architect — plan and orchestrate complete plugin creation.,,,anytime,,,false,plugin_output_path,plugin architecture and orchestration
+Strapi Plugin Forge,strapi-forge-agent-backend-dev,Backend Developer,BD,Strapi v5 backend specialist — services controllers routes content types.,,,anytime,,,false,plugin_output_path,backend code
+Strapi Plugin Forge,strapi-forge-agent-frontend-dev,Frontend Developer,FD,Strapi admin panel UI specialist — React and Strapi Design System.,,,anytime,,,false,plugin_output_path,admin UI code
+Strapi Plugin Forge,strapi-forge-agent-test-engineer,Test Engineer,TE,Plugin test specialist — unit and integration tests for Strapi v5 plugins.,,,anytime,,,false,plugin_output_path,test suites
+Strapi Plugin Forge,strapi-forge-agent-code-reviewer,Code Reviewer,CR,Strapi v5 code quality reviewer — standards compliance and best practices.,,,anytime,,,false,plugin_output_path,review reports
+Strapi Plugin Forge,strapi-forge-agent-tech-writer,Technical Writer (Muin),TW,Plugin documentation specialist — README API reference guides examples.,,,anytime,,,false,plugin_output_path,documentation
+Strapi Plugin Forge,strapi-forge-create-plugin,Create Plugin,NP,Create a complete Strapi v5 plugin from concept to functional prototype (20-30 min) — orchestrates architecture backend UI tests review and docs.,,,anytime,,strapi-forge-plugin-audit,false,plugin_output_path,complete plugin
+Strapi Plugin Forge,strapi-forge-quick-scaffold,Quick Scaffold,QS,Fast plugin scaffolding for experienced developers (under 5 min).,,,anytime,,,false,plugin_output_path,plugin scaffold
+Strapi Plugin Forge,strapi-forge-generate-backend,Generate Backend,GB,Generate Strapi v5 plugin backend — content types services controllers routes policies.,,,anytime,,,false,plugin_output_path,backend code
+Strapi Plugin Forge,strapi-forge-generate-ui,Generate Admin UI,GU,Generate Strapi admin panel UI with Design System components.,,,anytime,strapi-forge-generate-backend,,false,plugin_output_path,admin UI code
+Strapi Plugin Forge,strapi-forge-generate-tests,Generate Tests,GT,Generate unit and integration tests for a Strapi v5 plugin.,,,anytime,strapi-forge-generate-backend,,false,plugin_output_path,test suites
+Strapi Plugin Forge,strapi-forge-review-plugin,Review Plugin,RP,Automated code review of a generated or existing plugin against the configured quality level.,,,anytime,,,false,plugin_output_path,review report
+Strapi Plugin Forge,strapi-forge-generate-docs,Generate Docs,GD,Generate complete plugin documentation — README API reference guides examples.,,,anytime,,,false,plugin_output_path,documentation
+Strapi Plugin Forge,strapi-forge-plugin-audit,Plugin Audit,AU,Deep audit of an existing Strapi v5 plugin — structure code quality security performance.,,,anytime,,,false,output_folder,audit report
+Strapi Plugin Forge,strapi-forge-custom-field,Custom Field Generator,CF,Generate a Strapi v5 custom field plugin end to end.,,,anytime,,,false,plugin_output_path,custom field plugin
+Strapi Plugin Forge,strapi-forge-admin-panel,Admin Panel Designer,AP,Design and generate advanced admin panel pages and navigation for a plugin.,,,anytime,,,false,plugin_output_path,admin panel code
+Strapi Plugin Forge,strapi-forge-document-plugin,Document Plugin,DP,Analyze an existing plugin and produce structured documentation.,,,anytime,,,false,plugin_output_path,documentation

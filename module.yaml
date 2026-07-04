@@ -1,0 +1,42 @@
+code: strapi-forge
+name: Strapi Plugin Forge
+description: "AI-powered Strapi v5 plugin development: specialist agents and workflows that take a plugin from concept to tested, documented prototype — architecture, backend, admin UI, tests, code review, and docs"
+module_version: 1.0.0
+default_selected: false
+module_greeting: >
+  Strapi Plugin Forge installed. Talk to Nadir, the Plugin Architect
+  (strapi-forge-agent-architect skill), to create a new plugin end-to-end, or
+  invoke any workflow skill directly (strapi-forge-create-plugin,
+  strapi-forge-quick-scaffold, strapi-forge-plugin-audit, ...). Run the
+  strapi-forge-setup skill first so the module knows where your Strapi v5
+  project lives and where generated plugins should be written.
+
+# Variables from Core Config inserted:
+## user_name
+## communication_language
+## document_output_language
+## output_folder
+
+strapi_project_path:
+  prompt:
+    - "Path to your Strapi v5 project (used to test generated plugins)?"
+    - "Leave empty if you don't have one yet — plugins are still generated standalone."
+  default: ""
+  result: "{value}"
+
+plugin_output_path:
+  prompt: "Where should generated plugins be saved?"
+  default: "{output_folder}/strapi-plugins"
+  result: "{value}"
+
+code_quality_level:
+  prompt: "Code review strictness level?"
+  default: "standard"
+  result: "{value}"
+  single-select:
+    - value: "standard"
+      label: "Standard - Balanced quality checks (recommended)"
+    - value: "strict"
+      label: "Strict - Rigorous best practices enforcement"
+    - value: "enterprise"
+      label: "Enterprise - Maximum quality standards"

@@ -1,0 +1,41 @@
+{
+  "name": "strapi-plugin-forge",
+  "owner": {
+    "name": "Ayoub Hidri"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/ayhid/bmad-strapi-agent",
+  "repository": "https://github.com/ayhid/bmad-strapi-agent",
+  "keywords": ["bmad", "strapi", "strapi-v5", "plugin", "code-generation", "agents"],
+  "plugins": [
+    {
+      "name": "strapi-forge",
+      "source": "./skills",
+      "description": "AI-powered Strapi v5 plugin development: specialist agents and workflows that take a plugin from concept to tested, documented prototype — architecture, backend, admin UI, tests, code review, and docs",
+      "version": "1.0.0",
+      "author": {
+        "name": "Ayoub Hidri"
+      },
+      "skills": [
+        "./skills/strapi-forge-setup",
+        "./skills/strapi-forge-agent-architect",
+        "./skills/strapi-forge-agent-backend-dev",
+        "./skills/strapi-forge-agent-frontend-dev",
+        "./skills/strapi-forge-agent-test-engineer",
+        "./skills/strapi-forge-agent-code-reviewer",
+        "./skills/strapi-forge-agent-tech-writer",
+        "./skills/strapi-forge-create-plugin",
+        "./skills/strapi-forge-quick-scaffold",
+        "./skills/strapi-forge-generate-backend",
+        "./skills/strapi-forge-generate-ui",
+        "./skills/strapi-forge-generate-tests",
+        "./skills/strapi-forge-review-plugin",
+        "./skills/strapi-forge-generate-docs",
+        "./skills/strapi-forge-plugin-audit",
+        "./skills/strapi-forge-custom-field",
+        "./skills/strapi-forge-admin-panel",
+        "./skills/strapi-forge-document-plugin"
+      ]
+    }
+  ]
+}

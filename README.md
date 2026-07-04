@@ -1,106 +1,83 @@
-# bmad-strapi-agent
+# Strapi Plugin Forge
 
-A [BMAD v6](https://github.com/bmad-code-org/BMAD-METHOD) project providing **Strapi Plugin Forge** — a custom BMAD module that accelerates Strapi v5 plugin development from concept to functional prototype with AI-powered agents and workflows.
+A [BMAD Method](https://github.com/bmad-code-org/BMAD-METHOD) community module that accelerates **Strapi v5 plugin development** from concept to functional prototype — AI-powered specialist agents and workflows covering architecture, backend, admin UI, tests, code review, and documentation.
 
-## What's Inside
+- **Speed**: plugin prototyping in ~30 minutes instead of hours
+- **Quality**: production-grade TypeScript following official Strapi v5 patterns, not just scaffolding
+- **Completeness**: backend, admin panel UI (Strapi Design System), tests, and docs generated together
+
+## Install
+
+In a project that already uses BMAD v6 (or fresh), run the BMAD installer and point it at this repository:
+
+```bash
+npx bmad-method install --custom-source https://github.com/ayhid/bmad-strapi-agent
+```
+
+Or interactively: run `npx bmad-method install` and add this repo URL as a custom source when the wizard asks.
+
+Then, from your coding agent (Claude Code, Codex, ...), run the setup skill once:
 
 ```
-.bmad/
-├── core/                                # BMAD core (installed)
-├── bmb/                                 # BMAD Builder module (installed)
-└── custom/modules/strapi-plugin-forge/  # ⭐ The Strapi Plugin Forge module
-    ├── agents/                          # 6 specialist agents
-    ├── workflows/                       # 11 workflows
-    ├── config.yaml                      # Module configuration
-    └── _module-installer/               # Installer definition
+> use the strapi-forge-setup skill
 ```
 
-## The Strapi Plugin Forge Module
+It asks where your Strapi v5 project lives (optional, used for testing), where generated plugins should be written, and the code-review strictness level (`standard` | `strict` | `enterprise`), then registers the module in `_bmad/config.yaml` and the help catalog.
+
+## Use
+
+Talk to the Plugin Architect and let him orchestrate everything:
+
+```
+> use the strapi-forge-agent-architect skill
+```
+
+Or invoke a workflow skill directly:
+
+| Skill | What it does |
+|-------|--------------|
+| `strapi-forge-create-plugin` | Full pipeline: concept → architecture → backend → UI → tests → review → docs |
+| `strapi-forge-quick-scaffold` | Fast minimal plugin skeleton (< 5 min) |
+| `strapi-forge-generate-backend` | Content types, services, controllers, routes, policies |
+| `strapi-forge-generate-ui` | Admin panel UI with Strapi Design System components |
+| `strapi-forge-generate-tests` | Unit + integration test suites (Jest) |
+| `strapi-forge-review-plugin` | Code review against the configured quality level |
+| `strapi-forge-generate-docs` | README, API reference, guides, examples |
+| `strapi-forge-plugin-audit` | Deep audit of an existing plugin |
+| `strapi-forge-custom-field` | Custom field plugin end-to-end |
+| `strapi-forge-admin-panel` | Advanced admin pages and navigation |
+| `strapi-forge-document-plugin` | Analyze and document an existing plugin |
 
 ### Agents
 
-| Agent | Role |
-|-------|------|
-| plugin-architect | Plugin architecture and orchestration |
-| backend-developer (Rashid) | Strapi v5 server-side code |
-| frontend-developer (Jamil) | Admin panel UI (Design System v2) |
-| test-engineer (Kamal) | Test suites (Jest) |
-| code-reviewer (Basir) | Quality, security, performance review |
-| technical-writer (Muin) | Documentation |
+| Skill | Agent | Role |
+|-------|-------|------|
+| `strapi-forge-agent-architect` | Nadir | Plugin architecture and orchestration |
+| `strapi-forge-agent-backend-dev` | Rashid | Strapi v5 server-side code |
+| `strapi-forge-agent-frontend-dev` | Jamil | Admin panel UI (Design System) |
+| `strapi-forge-agent-test-engineer` | Kamal | Test suites |
+| `strapi-forge-agent-code-reviewer` | Basir | Quality, security, performance review |
+| `strapi-forge-agent-tech-writer` | Muin | Documentation |
 
-### Workflows
-
-| Workflow | Type | Purpose |
-|----------|------|---------|
-| new-plugin-creation | orchestrator | Full plugin: concept → backend → UI → tests → review → docs |
-| quick-scaffold | standalone | Fast minimal plugin skeleton |
-| admin-panel-designer | standalone | Custom admin interfaces |
-| custom-field-generator | standalone | Custom field types |
-| plugin-audit | standalone | Audit an existing plugin |
-| documentation-generator | standalone | Document an existing plugin |
-| generate-backend | subworkflow | Content-types, services, controllers, routes |
-| generate-ui | subworkflow | Admin pages, components, API client |
-| generate-tests | subworkflow | Unit/integration/component tests |
-| review-plugin | subworkflow | Scored code review |
-| generate-docs | subworkflow | README, API docs, guides |
-
-All generated code targets **Strapi v5**: Document Service API (`strapi.documents`), Design System v2, React Router v6, `getFetchClient` — no deprecated v4 APIs (`@strapi/helper-plugin`, `entityService`).
-
-## Installation
-
-### Option A — Use this project directly
-
-```bash
-git clone https://github.com/ayhid/bmad-strapi-agent.git
-cd bmad-strapi-agent
-```
-
-Open the project in Claude Code (or your BMAD-compatible agent runtime). Activate BMad Master and run any workflow, e.g.:
+## Repository layout
 
 ```
-/bmad:core:agents:bmad-master
+skills/                       # the module — one folder per skill (SKILL.md + assets)
+├── strapi-forge-setup/       # module registration: config + help entries
+├── strapi-forge-agent-*/     # 6 specialist agents (SKILL.md + customize.toml)
+└── strapi-forge-*/           # 11 workflow skills
+.claude-plugin/marketplace.json  # discovery manifest for the BMAD installer
+module.yaml                   # module identity + config schema (copy of setup assets)
+docs/                         # module brief and audit reports from the module's design phase
 ```
 
-### Option B — Install the module into an existing BMAD v6 project
-
-1. Copy the module into your project:
-
-   ```bash
-   cp -r .bmad/custom/modules/strapi-plugin-forge /path/to/your-project/.bmad/custom/modules/
-   ```
-
-2. Create the module config at `.bmad/custom/modules/strapi-plugin-forge/config.yaml` (or re-run the BMAD installer so it processes `_module-installer/install-config.yaml`). Minimum fields:
-
-   ```yaml
-   user_name: You
-   communication_language: English
-   output_folder: '{project-root}/docs'
-   strapi_project_path: ''                                # your Strapi v5 app (for testing plugins)
-   plugin_output_path: '{project-root}/docs/strapi-plugins'
-   code_quality_level: standard                           # standard | strict | enterprise
-   template_library_path: '{project-root}/.bmad/strapi-plugin-forge/data/templates'
-   strapi_version: v5
-   module_data_path: '{project-root}/.bmad/strapi-plugin-forge/data'
-   plugin_registry_path: '{project-root}/.bmad/strapi-plugin-forge/data/plugin-registry.json'
-   ```
-
-3. Run a workflow by pointing the BMAD workflow engine (`.bmad/core/tasks/workflow.xml`) at the workflow's `workflow.yaml`, or register the module with the BMAD installer to get slash commands.
+Every agent and workflow is customizable per project without touching this repo: overrides live in `{project-root}/_bmad/custom/<skill-name>.toml` (team) and `<skill-name>.user.toml` (personal), merged over each skill's `customize.toml`.
 
 ## Requirements
 
-- BMAD v6 (built against 6.0.0-alpha.11)
-- Node.js >=18 <=22 (for generated plugins)
-- A Strapi v5 project (to test generated plugins)
-
-## Example Output
-
-A plugin generated end-to-end by the `new-plugin-creation` workflow:
-[ayhid/strapi-plugin-quick-notes](https://github.com/ayhid/strapi-plugin-quick-notes) — note content-type, Document Service, admin page, 8 passing tests.
-
-## Quality
-
-The module's 11 workflows were audited against BMAD v6 standards (config compliance, variable alignment, orchestration integrity, bloat) — see the audit reports in [docs/](./docs/). Current status: fully compliant, 0 open findings.
+- BMAD Method v6 (current, skills-based) installed in the target project — the skills read shared config from `_bmad/config.yaml`
+- A Strapi **v5** project for testing generated plugins (optional but recommended)
 
 ## License
 
-MIT
+MIT — see [LICENSE](LICENSE). The setup merge scripts are adapted from [bmad-loop](https://github.com/bmad-code-org/bmad-loop) (MIT).
