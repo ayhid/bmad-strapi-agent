@@ -68,7 +68,7 @@ skills/                       # the module — one folder per skill (SKILL.md + 
 └── strapi-forge-*/           # 11 workflow skills
 .claude-plugin/marketplace.json  # discovery manifest for the BMAD installer
 module.yaml                   # module identity + config schema (copy of setup assets)
-docs/                         # module brief and audit reports from the module's design phase
+docs/                         # module brief from the module's design phase
 ```
 
 Every agent and workflow is customizable per project without touching this repo: overrides live in `{project-root}/_bmad/custom/<skill-name>.toml` (team) and `<skill-name>.user.toml` (personal), merged over each skill's `customize.toml`.
