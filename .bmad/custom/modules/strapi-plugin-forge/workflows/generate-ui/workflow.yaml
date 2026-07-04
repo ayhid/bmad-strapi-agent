@@ -1,0 +1,20 @@
+# Generate UI - Strapi Admin Panel Components
+name: 'generate-ui'
+description: 'Generate admin panel UI components using Strapi Design System - pages, components, routing, state management'
+author: 'Ayoub'
+
+# Paths
+installed_path: '{project-root}/.bmad/custom/modules/strapi-plugin-forge/workflows/generate-ui'
+template: false # Action workflow
+instructions: '{installed_path}/instructions.md'
+
+# Critical variables from module config
+config_source: '{project-root}/.bmad/custom/modules/strapi-plugin-forge/config.yaml'
+code_quality_level: '{config_source}:code_quality_level'
+user_name: '{config_source}:user_name'
+communication_language: '{config_source}:communication_language'
+output_folder: '{config_source}:output_folder'
+date: system-generated
+
+# Invocation control
+standalone: false # Only called by other workflows/agents

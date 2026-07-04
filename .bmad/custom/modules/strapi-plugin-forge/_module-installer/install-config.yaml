@@ -1,0 +1,64 @@
+# Strapi Plugin Forge Module Configuration
+# This file defines installation questions and module configuration values
+
+code: strapi-plugin-forge
+name: "Strapi Plugin Forge"
+version: "1.0.0"
+default_selected: false
+
+# Welcome message shown during installation
+prompt:
+  - "Thank you for choosing Strapi Plugin Forge!"
+  - "This module accelerates Strapi v5 plugin development from concept to functional prototype."
+  - "Generate production-quality plugins 10x faster with AI-powered agents."
+
+# Core config values are automatically inherited:
+## user_name
+## communication_language
+## document_output_language
+## output_folder
+
+# ============================================================================
+# CONFIGURATION FIELDS
+# ============================================================================
+
+# INTERACTIVE: Path to Strapi v5 project for testing generated plugins
+strapi_project_path:
+  prompt: "Path to your Strapi v5 project (for testing generated plugins)?"
+  default: ""
+  result: "{value}"
+
+# INTERACTIVE: Where to generate plugin files
+plugin_output_path:
+  prompt: "Where should generated plugins be saved?"
+  default: "{output_folder}/strapi-plugins"
+  result: "{project-root}/{value}"
+
+# INTERACTIVE: Code quality strictness level
+code_quality_level:
+  prompt: "Code review strictness level?"
+  default: "standard"
+  result: "{value}"
+  single-select:
+    - value: "standard"
+      label: "Standard - Balanced quality checks (recommended)"
+    - value: "strict"
+      label: "Strict - Rigorous best practices enforcement"
+    - value: "enterprise"
+      label: "Enterprise - Maximum quality standards"
+
+# STATIC: Template library storage path
+template_library_path:
+  result: "{project-root}/.bmad/strapi-plugin-forge/data/templates"
+
+# STATIC: Strapi version target
+strapi_version:
+  result: "v5"
+
+# STATIC: Module data path
+module_data_path:
+  result: "{project-root}/.bmad/strapi-plugin-forge/data"
+
+# STATIC: Plugin registry path (tracks generated plugins)
+plugin_registry_path:
+  result: "{project-root}/.bmad/strapi-plugin-forge/data/plugin-registry.json"

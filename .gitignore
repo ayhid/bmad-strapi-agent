@@ -1,0 +1,12 @@
+# Generated plugin output (each plugin gets its own repo)
+docs/strapi-plugins/
+
+# Runtime data
+.bmad/strapi-plugin-forge/data/plugin-registry.json
+
+# Dependencies
+node_modules/
+
+# OS / editor noise
+.DS_Store
+*.log

@@ -1,0 +1,32 @@
+# Strapi Plugin Forge Module Configuration
+# Generated from _module-installer/install-config.yaml defaults
+# Date: 2026-07-03
+
+# Core Configuration Values (inherited from core config)
+bmad_folder: .bmad
+user_name: Ayoub
+communication_language: English
+document_output_language: English
+output_folder: '{project-root}/docs'
+
+# INTERACTIVE: Path to Strapi v5 project for testing generated plugins
+# TODO(Ayoub): set this to your Strapi v5 project path when available
+strapi_project_path: ''
+
+# INTERACTIVE: Where to generate plugin files
+plugin_output_path: '{project-root}/docs/strapi-plugins'
+
+# INTERACTIVE: Code quality strictness level (standard | strict | enterprise)
+code_quality_level: standard
+
+# STATIC: Template library storage path
+template_library_path: '{project-root}/.bmad/strapi-plugin-forge/data/templates'
+
+# STATIC: Strapi version target
+strapi_version: v5
+
+# STATIC: Module data path
+module_data_path: '{project-root}/.bmad/strapi-plugin-forge/data'
+
+# STATIC: Plugin registry path (tracks generated plugins)
+plugin_registry_path: '{project-root}/.bmad/strapi-plugin-forge/data/plugin-registry.json'
